@@ -1,2 +1,3 @@
 pandas
 jieba.posseg
+synonyms

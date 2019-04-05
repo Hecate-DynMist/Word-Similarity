@@ -19,13 +19,14 @@ entities = entities.dropna(axis=0,how='all').drop_duplicates().reset_index(drop=
 # define keywords match function. Input are keywords and entities, generate output of keywords-matched entities
 
 def keywordsmatch(keywords,entities):
-    # same word match
+    # same and similar words match by using synonyms
+    import synonyms
     keywords['entity']=''
     for i in range(len(keywords)):
         keywords['entity'][i]=[]
         for ii in range(len(keywords['keywords'][i].split(','))):
             for j in range(len(entities)):
-                if entities['name'][j] ==keywords['keywords'][i].split(',')[ii]:
+                synonyms.compare(entities['name'][j],keywords['keywords'][1].split(',')[i],seg=False)>0.6: # if score>0.6, select it as similar word
                     keywords['entity'][i].append(entities['name'][j])
 
     # use jieba.posseg for name entity recognization match
