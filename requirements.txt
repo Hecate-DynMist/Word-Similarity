@@ -1,0 +1,5 @@
+pandas
+jieba
+scipy
+scikit-learn
+-U synonyms
