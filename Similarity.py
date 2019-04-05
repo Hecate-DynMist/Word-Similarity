@@ -29,15 +29,13 @@ def keywordsmatch(keywords,entities):
                 if synonyms.compare(entities['name'][j],keywords['keywords'][i].split(',')[ii],seg=False)>0.6: # if score>0.6, select it as similar word
                     keywords['entity'][i].append(entities['name'][j])
 
-    # use jieba.posseg for name entity recognization match
-    import jieba.posseg as pseg
+    # name entity recognization match
     keywords['flag']=''
     for i in range(len(keywords)):
         keywords['flag'][i]=[]
         for ii in range(len(keywords['keywords'][i].split(','))):
-            words = pseg.cut(keywords['keywords'][i].split(',')[ii])
-            for word in words:
-                keywords['flag'][i].append(word.flag)
+            words = synonyms.seg(keywords['keywords'][i].split(',')[ii])
+            keywords['flag'][i].append(words[1])
             if keywords['flag'][i][ii]=='nt' or keywords['flag'][i][ii]=='nr':
                 keywords['entity'][i].append(word.word)    
     return(keywords)
