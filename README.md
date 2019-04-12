@@ -15,11 +15,11 @@ $ python Similarity.py flash
 
 #### Time Spent for Same Words Match
 
-Training on 1000 articles
+Run on 1000 articles
 
-| Method    | Time    |      |
-| --------- | ------- | ---- |
-| Brutal    | 508.354 |      |
-| FlashText | 1.112   |      |
-|           |         |      |
+| Method    | Time (s) |      |
+| --------- | -------- | ---- |
+| Brutal    | 508.354  |      |
+| FlashText | 1.112    |      |
+|           |          |      |
 
